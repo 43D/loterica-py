@@ -13,3 +13,9 @@ def concursosView(request):
 
 def concursoViewID(request, id):
     return render(request, "concurso/id.html", {'id':id})
+
+def conjuntoView(request, op):
+    return render(request, "conjunto/index.html")
+
+def docsView(request, op):
+    return render(request, "docs/index.html")

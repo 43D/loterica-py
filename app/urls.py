@@ -7,6 +7,6 @@ urlpatterns = [
     path('', views.homeView, name="home"),
     path('concurso/', views.concursosView, name="concursos"),
     path('concurso/<int:id>', views.concursoViewID, name="concursoID"),
-    #path('conjunto/<int:id>', views.concursoView, name="conjunto"),
+    path('conjunto/<str:op>', views.conjuntoView, name="conjunto"),
 
 ]
