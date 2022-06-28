@@ -1,0 +1,29 @@
+{% extends "template/base.html" %}
+{% load static %}
+
+{% block title %} Concurso id {% endblock %}
+{% block content %}
+<div class="col-12 my-3">
+a
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    const url = "http://127.0.0.1:8000/api/concurso/{{}}";
+
+    $(function () {
+        getConcurso();
+    });
+
+    function getConcurso() {
+        $.getJSON(url, function (data) {
+            popular(data);
+        });
+    }
+
+    function popular(data) {
+        console.log(data);
+    }
+</script>
+{% endblock %}

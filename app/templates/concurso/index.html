@@ -1,0 +1,61 @@
+{% extends "template/base.html" %}
+{% load static %}
+
+{% block title %} Concursos {% endblock %}
+{% block content %}
+<div class="col-12 my-3">
+    <table class="table table-light table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nº do concurso</th>
+                <th scope="col">Valores</th>
+                <th scope="col">Data do concurso</th>
+                <th scope="col">Mais detalhes</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider" id="tableBody">
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    const url = "http://127.0.0.1:8000/api/concurso/";
+
+    $(function () {
+        getConcurso();
+    });
+
+    function getConcurso() {
+        $.getJSON(url, function (data) {
+            popular(data);
+        });
+    }
+
+    function popular(data) {
+        let table = $("#tableBody")
+        for (let concurso of data) {
+            console.log(concurso)
+            let tr = $("<tr>");
+            let td1 = $("<td>");
+            let td2 = $("<td>");
+            let td3 = $("<td>");
+            let td4 = $("<td>");
+
+            td1.html(concurso.concurso);
+            td2.html(concurso.valores);
+            td3.html(concurso.data);
+
+            td4.append($('<a href="' + (window.location.href + concurso.concurso) + '">Acessar</a>'));
+
+            tr.append(td1);
+            tr.append(td2);
+            tr.append(td3);
+            tr.append(td4);
+            table.append(tr);
+        }
+    }
+</script>
+{% endblock %}

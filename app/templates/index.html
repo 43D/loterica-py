@@ -1,0 +1,48 @@
+{% extends "template/base.html" %}
+{% load static %}
+
+{% block title %} Home page {% endblock %}
+{% block content %}
+<div class="col-12 mt-4">
+    <form class="row" method="post" action="./consultar">
+        <div class="col-md-4 col-6 mt-1">
+            <select class="form-select" id="select_1" aria-label="Selecione 1 valor">
+                <option value="0">Selecione 1º valor</option>
+            </select>
+        </div>
+        <div class="col-md-4 col-6 mt-1">
+            <select class="form-select"  id="select_2" aria-label="Selecione 1 valor" disabled>
+                <option value="0">Selecione 2º valor</option>
+            </select>
+        </div>
+        <div class="col-md-4 col-6 mt-1">
+            <select class="form-select"  id="select_3" aria-label="Selecione 1 valor" disabled>
+                <option value="0">Selecione 3º valor</option>
+            </select>
+        </div>
+        <div class="col-md-4 col-6 mt-1">
+            <select class="form-select"  id="select_4" aria-label="Selecione 1 valor" disabled>
+                <option value="0">Selecione 4º valor</option>
+            </select>
+        </div>
+        <div class="col-md-4 col-6 mt-1">
+            <select class="form-select"  id="select_5" aria-label="Selecione 1 valor" disabled>
+                <option value="0">Selecione 5º valor</option>
+            </select>
+        </div>
+        <div class="col-md-4 col-6 mt-1">
+            <select class="form-select"  id="select_6" aria-label="Selecione 1 valor" disabled>
+                <option value="0">Selecione 6º valor</option>
+            </select>
+        </div>
+        <div class="col-12 mt-2 mb-2 d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Consultar a sorte</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script src="{% static 'app/js/app.js' %}"></script>
+{% endblock %}
