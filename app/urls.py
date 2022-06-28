@@ -6,7 +6,7 @@ app_name = "APP"
 urlpatterns = [
     path('', views.homeView, name="home"),
     path('concurso/', views.concursosView, name="concursos"),
-    path('concurso/<int:id>', views.concursoView, name="concurso"),
+    path('concurso/<int:id>', views.concursoViewID, name="concursoID"),
     #path('conjunto/<int:id>', views.concursoView, name="conjunto"),
 
 ]

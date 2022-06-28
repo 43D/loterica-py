@@ -4,13 +4,47 @@
 {% block title %} Concurso id {% endblock %}
 {% block content %}
 <div class="col-12 my-3">
-a
+    <h3 class="mx-2 mt-3">Concurso: </h3>
+    <table class="table table-light table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nº do concurso</th>
+                <th scope="col">V1</th>
+                <th scope="col">V2</th>
+                <th scope="col">V3</th>
+                <th scope="col">V4</th>
+                <th scope="col">V5</th>
+                <th scope="col">V6</th>
+                <th scope="col">Data do concurso</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider" id="tableBody">
+
+        </tbody>
+    </table>
+</div>
+<div class="col-12 mt-4" id="conteudo">
+    <h3 class="mx-2">Conjuntos: </h3>
+    <table class="table table-light table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Conjunto</th>
+                <th scope="col">Frequência</th>
+                <th scope="col">Média de frequência</th>
+                <th scope="col">Mais detalhes</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider" id="tableBody2">
+
+        </tbody>
+    </table>
 </div>
 {% endblock %}
 
 {% block script %}
 <script>
-    const url = "http://127.0.0.1:8000/api/concurso/{{}}";
+    const url = "http://127.0.0.1:8000/api/concurso/{{id}}/";
+    const url2 = "http://127.0.0.1:8000/api/consultar/";
 
     $(function () {
         getConcurso();
@@ -19,11 +53,68 @@ a
     function getConcurso() {
         $.getJSON(url, function (data) {
             popular(data);
+            let nuns = [data.numeros.numero_1, data.numeros.numero_2, data.numeros.numero_3, data.numeros.numero_4, data.numeros.numero_5, data.numeros.numero_6];
+            $.getJSON(url2 + nuns.join("/"), function (data) {
+                popularCon(data);
+            });
         });
+
     }
 
     function popular(data) {
-        console.log(data);
+        let table = $("#tableBody");
+        let tr = $("<tr>");
+        let td1 = $("<td>");
+        let td2 = $("<td>");
+        let td3 = $("<td>");
+        let td4 = $("<td>");
+        let td5 = $("<td>");
+        let td6 = $("<td>");
+        let td7 = $("<td>");
+        let td8 = $("<td>");
+        td1.html(data.concurso);
+        td2.html(data.numeros.numero_1);
+        td3.html(data.numeros.numero_2);
+        td4.html(data.numeros.numero_3);
+        td5.html(data.numeros.numero_4);
+        td6.html(data.numeros.numero_5);
+        td7.html(data.numeros.numero_6);
+        td8.html(data.data);
+        tr.append(td1);
+        tr.append(td2);
+        tr.append(td3);
+        tr.append(td4);
+        tr.append(td5);
+        tr.append(td6);
+        tr.append(td7);
+        tr.append(td8);
+        table.append(tr);
+    }
+    function popularCon(data) {
+        let table = $("#tableBody2");
+        $.each(data, function (key, value) {
+            $.each(value, function (k, v) {
+                $.each(v, function (j, i) {
+                    let tr = $("<tr>");
+                    let td1 = $("<td>");
+                    let td2 = $("<td>");
+                    let td3 = $("<td>");
+                    let td4 = $("<td>");
+
+                    td1.html(i.id);
+                    td2.html(i.contador);
+                    td3.html(i.media_frequencia);
+
+                    td4.append($('<a href="#' + i.id + '">Acessar</a>'));
+
+                    tr.append(td1);
+                    tr.append(td2);
+                    tr.append(td3);
+                    tr.append(td4);
+                    table.append(tr);
+                });
+            });
+        });
     }
 </script>
 {% endblock %}

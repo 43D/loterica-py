@@ -11,5 +11,5 @@ def homeView(request):
 def concursosView(request):
     return render(request,"concurso/index.html")
 
-def concursoView(request):
-    return render(request,"concurso/id.html")
+def concursoViewID(request, id):
+    return render(request, "concurso/id.html", {'id':id})

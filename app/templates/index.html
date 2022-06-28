@@ -4,7 +4,7 @@
 {% block title %} Home page {% endblock %}
 {% block content %}
 <div class="col-12 mt-4">
-    <form class="row" method="post" action="./consultar">
+    <form class="row" action="javascript:void(0);">
         <div class="col-md-4 col-6 mt-1">
             <select class="form-select" id="select_1" aria-label="Selecione 1 valor">
                 <option value="0">Selecione 1º valor</option>
@@ -36,10 +36,34 @@
             </select>
         </div>
         <div class="col-12 mt-2 mb-2 d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary">Consultar a sorte</button>
+            <button type="button" class="btn btn-primary" id="receba">Consultar a sorte</button>
         </div>
     </form>
 </div>
+<div class="col-12 mt-4 d-none" id="conteudo">
+    <div class="row">
+        <div class="col-12">
+            <h3>Consultando <span id="title"></span></h3>
+        </div>
+        <div class="col-12 my-3">
+            <table class="table table-light table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Conjunto</th>
+                        <th scope="col">Frequência</th>
+                        <th scope="col">Média de frequência</th>
+                        <th scope="col">Mais detalhes</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider" id="tableBody">
+        
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}
 
 
