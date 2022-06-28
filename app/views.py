@@ -17,5 +17,5 @@ def concursoViewID(request, id):
 def conjuntoView(request, op):
     return render(request, "conjunto/index.html")
 
-def docsView(request, op):
+def docsView(request):
     return render(request, "docs/index.html")

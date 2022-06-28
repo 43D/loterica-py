@@ -8,5 +8,6 @@ urlpatterns = [
     path('concurso/', views.concursosView, name="concursos"),
     path('concurso/<int:id>', views.concursoViewID, name="concursoID"),
     path('conjunto/<str:op>', views.conjuntoView, name="conjunto"),
+    path('docs/', views.docsView, name="docs"),
 
 ]
